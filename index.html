@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ビジネスマン覚醒研修 | コンサル思考インストール</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Noto Sans JP', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              black: '#050505',
+              blue: '#00D9FF',
+              orange: '#FF6B35',
+              dark: '#111111',
+              gray: '#1a1a1a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: theme('colors.brand.black');
+      color: #e2e8f0;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Text Balance for responsive headings */
+    .text-balance {
+      text-wrap: balance;
+    }
+
+    /* Text Gradients */
+    .text-gradient {
+      background: linear-gradient(to bottom, #ffffff, #a0aec0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .text-gradient-blue {
+      background: linear-gradient(90deg, #fff, theme('colors.brand.blue'));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Hero Title Glow & Animation */
+    .hero-title-glow {
+      text-shadow: 0 0 30px rgba(0,217,255,1), 0 0 60px rgba(0,217,255,0.6), 0 0 100px rgba(0,217,255,0.3);
+      color: #ffffff;
+      animation: pulse-glow 3s infinite alternate;
+    }
+
+    @keyframes pulse-glow {
+      0% { text-shadow: 0 0 20px rgba(0,217,255,0.8), 0 0 40px rgba(0,217,255,0.4); transform: scale(1); }
+      100% { text-shadow: 0 0 40px rgba(0,217,255,1), 0 0 80px rgba(0,217,255,0.6), 0 0 120px rgba(0,217,255,0.2); transform: scale(1.02); }
+    }
+
+    /* Reveal Animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Custom Button Effects */
+    .btn-glow {
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+    .btn-glow::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(rgba(255,255,255,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+    .btn-glow:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 0 40px rgba(0, 217, 255, 0.4);
+    }
+    .btn-glow:hover::after {
+      opacity: 1;
+    }
+
+    /* Card Hover Effects */
+    .glass-card {
+      background: theme('colors.brand.dark');
+      border: 1px solid #222;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .glass-card:hover {
+      border-color: theme('colors.brand.blue');
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -5px rgba(0, 217, 255, 0.1);
+      background: #151515;
+    }
+
+    .light-card {
+      background: #fff;
+      border: 1px solid #f0f0f0;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .light-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(0, 217, 255, 0.05) 0%, transparent 100%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    .light-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.1);
+      border-color: rgba(0, 217, 255, 0.3);
+    }
+    .light-card:hover::before {
+      opacity: 1;
+    }
+
+    /* FAQ Accordion */
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+    .faq-item.active .faq-answer {
+      max-height: 200px;
+      padding-bottom: 24px;
+    }
+    .faq-icon {
+      transition: transform 0.3s ease;
+    }
+    .faq-item.active .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    /* Curriculum Line */
+    .timeline-line::after {
+      content: '';
+      position: absolute;
+      left: 31px;
+      top: 64px;
+      bottom: -48px;
+      width: 2px;
+      background: linear-gradient(to bottom, theme('colors.brand.blue'), rgba(255,255,255,0.1));
+    }
+    .curriculum-step:last-child .timeline-line::after {
+      display: none;
+    }
+
+    /* Floating Nav */
+    #navbar.scrolled {
+      background: rgba(5, 5, 5, 0.8);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      padding-top: 16px;
+      padding-bottom: 16px;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-blue selection:text-black font-sans">
+
+  <!-- Navigation -->
+  <nav id="navbar" class="fixed top-0 left-0 w-full z-50 py-6 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+      <div class="font-black text-xl tracking-wider text-white">
+        BUSINESS <span class="text-brand-blue">AWAKENING</span>
+      </div>
+      <a href="#cta" class="bg-white text-black font-bold py-2 px-6 rounded-full text-sm hover:bg-gray-100 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.1)]">
+        体験セミナー申込
+      </a>
+    </div>
+  </nav>
+
+  <!-- Section 1: Hero -->
+  <section id="hero" class="relative min-h-[90vh] md:min-h-[800px] flex items-center justify-center overflow-hidden pt-20">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,217,255,0.08)_0%,transparent_60%)]"></div>
+    <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+    
+    <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+      <h1 class="reveal font-black text-7xl md:text-9xl lg:text-[10rem] leading-[1.1] tracking-tight mb-8 hero-title-glow">
+        覚醒せよ
+      </h1>
+      <div class="reveal mb-12 tracking-wide max-w-3xl mx-auto leading-relaxed" style="transition-delay: 0.2s">
+        <span class="block text-2xl md:text-4xl font-bold text-white mb-6 drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] text-balance">「あの人、なんか変わったな」</span>
+        <span class="block text-xl md:text-3xl text-white font-bold drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] leading-snug text-balance">コンサルタントの思考法で、あなたの仕事が劇的に変わる30時間。</span>
+      </div>
+      
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-6" style="transition-delay: 0.4s">
+        <a href="#cta" class="btn-glow bg-brand-blue text-black font-bold text-lg py-4 px-10 rounded-full w-full sm:w-auto flex items-center justify-center gap-3">
+          体験セミナーに参加する (無料)
+          <i class="fas fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="reveal mt-16 flex flex-wrap justify-center items-center gap-6 text-sm md:text-base text-gray-400 font-medium" style="transition-delay: 0.6s">
+        <span class="flex items-center gap-2"><i class="fas fa-flask text-brand-blue"></i> 実証実験で100名の方が受講</span>
+        <span class="hidden sm:inline text-gray-700">|</span>
+        <span class="flex items-center gap-2"><i class="fas fa-check-circle text-brand-blue"></i> 満足度98%</span>
+      </div>
+
+      <!-- Badge -->
+      <div class="reveal mt-12 inline-block bg-gradient-to-br from-[#111] to-[#0a101a] border border-brand-blue/30 rounded-3xl py-6 px-8 md:px-12 shadow-[0_0_50px_rgba(0,217,255,0.08)]" style="transition-delay: 0.8s">
+        <p class="text-brand-blue text-sm font-bold mb-3 tracking-wider">元コンサル人事が伝える最高のトレーニング</p>
+        <div class="flex flex-col md:flex-row items-center justify-center gap-2 md:gap-4 text-brand-orange font-bold text-lg md:text-xl">
+          <i class="fas fa-rocket text-2xl hidden md:block"></i>
+          <span class="text-white">転職によるステップアップ成功確率 80%</span>
+          <span class="text-gray-600 hidden md:inline">|</span>
+          <span class="text-white">平均年収Up 200万円</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Problem -->
+  <section id="problem" class="bg-white text-gray-900 py-32">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h2 class="reveal text-3xl md:text-5xl font-black tracking-tight leading-tight text-balance">
+          日々、こんな<span class="text-brand-blue">「もどかしさ」</span>を感じていませんか？
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Card 1 -->
+        <div class="reveal light-card rounded-3xl p-10 text-center md:text-left">
+          <i class="fas fa-comments text-4xl text-brand-orange mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed">会議で急に話を振られても、気の利いた発言ができず愛想笑いでやり過ごしてしまう</p>
+        </div>
+        <!-- Card 2 -->
+        <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.1s">
+          <i class="fas fa-question text-4xl text-brand-orange mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed">上司の「で、結局何が言いたいの？」の一言に焦り、説明がさらに迷走してしまう</p>
+        </div>
+        <!-- Card 3 -->
+        <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.2s">
+          <i class="fas fa-hourglass-half text-4xl text-brand-orange mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed">何時間もかけて作った資料が、「これ、ピントずれてない？」の一言でボツになる</p>
+        </div>
+        <!-- Card 4 -->
+        <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.3s">
+          <i class="fas fa-tasks text-4xl text-brand-orange mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed">タスクの山を前に、どこから手をつければいいか分からず、いつも残業に追われている</p>
+        </div>
+        <!-- Card 5 -->
+        <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.4s">
+          <i class="fas fa-file-alt text-4xl text-brand-orange mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed">キャリアアップしたいが、職務経歴書に書ける「私ならではの強み」が思いつかない</p>
+        </div>
+        <!-- Card 6 -->
+        <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.5s">
+          <i class="fas fa-book-open text-4xl text-brand-orange mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed">ロジカルシンキングの本を何冊読んでも、実際の業務でどう使えばいいか分からない</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Solution -->
+  <section id="solution" class="py-32 bg-brand-black relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-24">
+        <h2 class="reveal text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+          3つの思考法で、<br>
+          <span class="text-brand-blue">見える世界がすべて変わる</span>
+        </h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <!-- Solution 1 -->
+        <div class="reveal glass-card rounded-[2rem] p-10 md:p-12 relative flex flex-col h-full overflow-hidden">
+          <div class="absolute top-4 right-8 text-[6rem] font-black text-white/[0.03] leading-none select-none">01</div>
+          <h3 class="text-2xl font-bold text-white mb-4 relative z-10">イシュードリブン思考</h3>
+          <p class="text-brand-blue font-bold mb-6 relative z-10">「本質的な課題」を一瞬で見抜く力</p>
+          <p class="text-gray-400 leading-relaxed relative z-10 flex-grow">
+            問題を解く前に「そもそも解くべき問題なのか」を特定します。これは優秀なコンサルタントが一番最初にやることです。
+          </p>
+          
+          <div class="mt-8 relative z-10">
+            <div class="bg-gradient-to-r from-brand-orange/20 to-transparent border border-brand-orange/30 rounded-xl p-4 flex items-start gap-3 mb-4">
+              <i class="fas fa-lightbulb text-brand-orange mt-1 text-xl drop-shadow-[0_0_8px_rgba(255,107,53,0.8)]"></i>
+              <div>
+                <span class="font-bold text-white block mb-1">【明日からこう変わる！】</span>
+                <span class="text-sm text-gray-300 leading-snug block">上司の「で、結論は？」に1秒で答えられる。ズレた無駄な作業が完全にゼロになります。</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 text-brand-orange font-medium text-sm pl-2">
+              <i class="fas fa-briefcase"></i> 転職のケース面接で直接活きるスキル
+            </div>
+          </div>
+        </div>
+
+        <!-- Solution 2 -->
+        <div class="reveal glass-card rounded-[2rem] p-10 md:p-12 relative flex flex-col h-full overflow-hidden" style="transition-delay: 0.2s">
+          <div class="absolute top-4 right-8 text-[6rem] font-black text-white/[0.03] leading-none select-none">02</div>
+          <h3 class="text-2xl font-bold text-white mb-4 relative z-10">エッセンシャル思考</h3>
+          <p class="text-brand-blue font-bold mb-6 relative z-10">「やらない勇気」を持つ力</p>
+          <p class="text-gray-400 leading-relaxed relative z-10 flex-grow">
+            独自の「90点ルール」で優先順位を明確にします。最も重要な1%の仕事だけに集中し、残りの99%は思い切って捨てる技術を学びます。
+          </p>
+          
+          <div class="mt-8 relative z-10">
+            <div class="bg-gradient-to-r from-brand-orange/20 to-transparent border border-brand-orange/30 rounded-xl p-4 flex items-start gap-3 mb-4">
+              <i class="fas fa-lightbulb text-brand-orange mt-1 text-xl drop-shadow-[0_0_8px_rgba(255,107,53,0.8)]"></i>
+              <div>
+                <span class="font-bold text-white block mb-1">【明日からこう変わる！】</span>
+                <span class="text-sm text-gray-300 leading-snug block">「これだけやればOK」が見えるため、定時退社しても周囲からの評価はむしろ上がります。</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 text-brand-orange font-medium text-sm pl-2">
+              <i class="fas fa-chart-line"></i> 面接で『成果の出し方』を強力にアピール
+            </div>
+          </div>
+        </div>
+
+        <!-- Solution 3 -->
+        <div class="reveal glass-card rounded-[2rem] p-10 md:p-12 relative flex flex-col h-full overflow-hidden" style="transition-delay: 0.4s">
+          <div class="absolute top-4 right-8 text-[6rem] font-black text-white/[0.03] leading-none select-none">03</div>
+          <h3 class="text-2xl font-bold text-white mb-4 relative z-10">ロジカルシンキング</h3>
+          <p class="text-brand-blue font-bold mb-6 relative z-10">「構造的に考え、伝える」力</p>
+          <p class="text-gray-400 leading-relaxed relative z-10 flex-grow">
+            複雑な情報を整理し、誰にでもスッと伝わる論理を組み立てます。感覚ではなく「構造」で語るための型を完全にインストールします。
+          </p>
+          
+          <div class="mt-8 relative z-10">
+            <div class="bg-gradient-to-r from-brand-orange/20 to-transparent border border-brand-orange/30 rounded-xl p-4 flex items-start gap-3 mb-4">
+              <i class="fas fa-lightbulb text-brand-orange mt-1 text-xl drop-shadow-[0_0_8px_rgba(255,107,53,0.8)]"></i>
+              <div>
+                <span class="font-bold text-white block mb-1">【明日からこう変わる！】</span>
+                <span class="text-sm text-gray-300 leading-snug block">「なるほど、確かに！」と言われる説得力が身につき、あなたの企画や提案が一発で通ります。</span>
+              </div>
+            </div>
+            <div class="flex items-center gap-3 text-brand-orange font-medium text-sm pl-2">
+              <i class="fas fa-file-alt"></i> 職務経歴書での「地頭の良さ」の証明に
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Transformation -->
+  <section id="transformation" class="py-32 bg-white text-gray-900">
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="text-center mb-16">
+        <h2 class="reveal font-black tracking-tight flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12">
+          <span class="text-2xl md:text-3xl text-gray-400 opacity-60">Before</span>
+          <i class="fas fa-arrow-right text-brand-blue transform rotate-90 md:rotate-0 my-2 md:my-0 text-3xl opacity-50"></i>
+          <span class="text-5xl md:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-[#00D9FF] to-[#0055ff] drop-shadow-[0_0_20px_rgba(0,217,255,0.4)]">After</span>
+        </h2>
+      </div>
+
+      <div class="reveal grid grid-cols-1 md:grid-cols-2 rounded-[2rem] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] border border-gray-100">
+        <!-- Before -->
+        <div class="bg-gray-100 p-10 md:p-16 relative flex flex-col justify-center">
+          <h3 class="text-lg md:text-xl font-bold text-gray-500 mb-10 text-center">現状のモヤモヤ</h3>
+          <div class="space-y-6 text-gray-500">
+            <div class="flex items-center gap-4">
+              <i class="fas fa-times opacity-50"></i> <span>なんとなくの「感覚」で仕事を進める</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <i class="fas fa-times opacity-50"></i> <span>時間をかけても、目に見える成果が出ない</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <i class="fas fa-times opacity-50"></i> <span>説明が長くなり、相手に意図が伝わらない</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <i class="fas fa-times opacity-50"></i> <span>手当たり次第に「とりあえず」着手する</span>
+            </div>
+            <div class="flex items-center gap-4">
+              <i class="fas fa-times opacity-50"></i> <span>他人に振れず、仕事を抱え込んでパンクする</span>
+            </div>
+          </div>
+        </div>
+        
+        <!-- After -->
+        <div class="bg-[#0a1018] p-10 md:p-16 relative overflow-hidden flex flex-col justify-center">
+          <div class="absolute inset-0 bg-[radial-gradient(circle_at_100%_0%,rgba(0,217,255,0.2),transparent_70%)] pointer-events-none"></div>
+          <h3 class="text-2xl md:text-3xl font-black text-white mb-10 text-center drop-shadow-[0_0_10px_rgba(0,217,255,0.5)] tracking-wide">30時間後のあなた</h3>
+          <div class="space-y-5 relative z-10">
+            <div class="text-lg md:text-xl font-bold text-white flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-brand-blue/20 to-transparent border-l-4 border-brand-blue shadow-[0_0_15px_rgba(0,217,255,0.15)] transform transition hover:translate-x-2">
+              <i class="fas fa-bolt text-brand-blue text-xl drop-shadow-[0_0_8px_rgba(0,217,255,0.8)]"></i>
+              迷わず「核心」を突く発言ができる
+            </div>
+            <div class="text-lg md:text-xl font-bold text-white flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-brand-blue/20 to-transparent border-l-4 border-brand-blue shadow-[0_0_15px_rgba(0,217,255,0.15)] transform transition hover:translate-x-2">
+              <i class="fas fa-bolt text-brand-blue text-xl drop-shadow-[0_0_8px_rgba(0,217,255,0.8)]"></i>
+              最小の労力で、最大の成果を出せる
+            </div>
+            <div class="text-lg md:text-xl font-bold text-white flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-brand-blue/20 to-transparent border-l-4 border-brand-blue shadow-[0_0_15px_rgba(0,217,255,0.15)] transform transition hover:translate-x-2">
+              <i class="fas fa-bolt text-brand-blue text-xl drop-shadow-[0_0_8px_rgba(0,217,255,0.8)]"></i>
+              誰が聞いても納得する「説得力」が身につく
+            </div>
+            <div class="text-lg md:text-xl font-bold text-white flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-brand-blue/20 to-transparent border-l-4 border-brand-blue shadow-[0_0_15px_rgba(0,217,255,0.15)] transform transition hover:translate-x-2">
+              <i class="fas fa-bolt text-brand-blue text-xl drop-shadow-[0_0_8px_rgba(0,217,255,0.8)]"></i>
+              常に「ゴール」から逆算して動ける
+            </div>
+            <div class="text-lg md:text-xl font-bold text-white flex items-center gap-4 p-4 rounded-xl bg-gradient-to-r from-brand-blue/20 to-transparent border-l-4 border-brand-blue shadow-[0_0_15px_rgba(0,217,255,0.15)] transform transition hover:translate-x-2">
+              <i class="fas fa-bolt text-brand-blue text-xl drop-shadow-[0_0_8px_rgba(0,217,255,0.8)]"></i>
+              「本当に重要な仕事」だけに集中できる
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: Curriculum -->
+  <section id="curriculum" class="py-32 bg-brand-black">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-24">
+        <h2 class="reveal text-4xl md:text-5xl font-black tracking-tight text-white leading-tight">
+          30時間で変わる、<br>
+          <span class="text-brand-blue">3段階カリキュラム</span>
+        </h2>
+      </div>
+
+      <div class="reveal space-y-12">
+        <!-- Step 1 -->
+        <div class="curriculum-step relative flex items-start gap-6 md:gap-10 timeline-line">
+          <div class="w-16 h-16 shrink-0 rounded-full bg-brand-blue/10 border border-brand-blue flex items-center justify-center text-brand-blue font-black text-2xl shadow-[0_0_20px_rgba(0,217,255,0.2)] relative z-10">1</div>
+          <div class="bg-brand-dark border border-gray-800 rounded-3xl p-8 md:p-10 flex-grow transition-all duration-300 hover:border-brand-blue/50 hover:bg-[#1a1a1a]">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+              <h3 class="text-2xl font-bold text-white">思考の土台をつくる（イシュー思考）</h3>
+              <span class="bg-white/10 px-4 py-1.5 rounded-full text-gray-300 text-sm font-medium w-fit">10時間</span>
+            </div>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              まずは「何でもかんでも手をつける（犬の道）」思考から脱却します。物事の本質を見極め、一番初めに「本当に解くべき問題は何か？」を特定するトレーニングを徹底的に行います。
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="curriculum-step relative flex items-start gap-6 md:gap-10 timeline-line">
+          <div class="w-16 h-16 shrink-0 rounded-full bg-brand-blue/10 border border-brand-blue flex items-center justify-center text-brand-blue font-black text-2xl shadow-[0_0_20px_rgba(0,217,255,0.2)] relative z-10">2</div>
+          <div class="bg-brand-dark border border-gray-800 rounded-3xl p-8 md:p-10 flex-grow transition-all duration-300 hover:border-brand-blue/50 hover:bg-[#1a1a1a]">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+              <h3 class="text-2xl font-bold text-white">武器を使いこなす（戦略的思考）</h3>
+              <span class="bg-white/10 px-4 py-1.5 rounded-full text-gray-300 text-sm font-medium w-fit">10時間</span>
+            </div>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              仮説を立てて検証するサイクルを高速で回す練習をします。本で読んだだけのフレームワーク（3C分析やSWOT分析など）を、実際の業務で「自然と使いこなせる」レベルまで引き上げます。
+            </p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="curriculum-step relative flex items-start gap-6 md:gap-10 timeline-line">
+          <div class="w-16 h-16 shrink-0 rounded-full bg-brand-blue/10 border border-brand-blue flex items-center justify-center text-brand-blue font-black text-2xl shadow-[0_0_20px_rgba(0,217,255,0.2)] relative z-10">3</div>
+          <div class="bg-brand-dark border border-gray-800 rounded-3xl p-8 md:p-10 flex-grow transition-all duration-300 hover:border-brand-blue/50 hover:bg-[#1a1a1a]">
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-4">
+              <h3 class="text-2xl font-bold text-white">現場で結果を出す（統合実践）</h3>
+              <span class="bg-white/10 px-4 py-1.5 rounded-full text-gray-300 text-sm font-medium w-fit">10時間</span>
+            </div>
+            <p class="text-gray-400 text-lg leading-relaxed">
+              経営者やリーダーと同じ視座を持ち、複雑な課題を紐解きます。学んだ思考法をフル動員し、実際の仕事でそのまま使える「実行可能な戦略」を作り上げる最終プロジェクトに挑みます。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 8: Instructor -->
+  <section id="instructor" class="py-32 bg-white text-gray-900">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h2 class="reveal text-4xl md:text-5xl font-black tracking-tight">講師<span class="text-brand-blue">紹介</span></h2>
+      </div>
+
+      <div class="flex flex-col gap-20">
+        <!-- Instructor 1 (北山様) -->
+        <div class="reveal flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
+          <div class="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full bg-gray-100 flex items-center justify-center relative overflow-hidden shadow-xl border-4 border-white">
+              <img src="kitayama.jpg" alt="北山 裕貴" class="w-full h-full object-cover">
+          </div>
+          <div class="text-center md:text-left flex-1">
+            <h3 class="text-3xl font-black text-gray-900 mb-2">北山 裕貴</h3>
+            <span class="block text-brand-blue font-bold text-lg mb-6">エグゼクティブトレーナー / プロコーチ</span>
+            
+            <p class="text-gray-600 text-lg leading-relaxed">
+              戦略コンサルタントとしての高度な論理的思考力と、人事視点での人材育成ノウハウを併せ持つプロフェッショナル講師。<br><br>
+              「わかりやすさ」と「物腰の柔らかさ」の中に、コンサルタント特有の「キレ」を内包した独自の指導スタイルは、多くのビジネスパーソンから圧倒的な支持を集めています。<br><br>
+              大手コンサルティングファームでの豊富な育成経験を活かし、受講者のレベルを問わず個々の潜在能力を極限まで引き出します。現在、企業からのオファーが殺到し個別指導が困難な中、本研修限定で直接指導を受けられる希少な機会となっています。
+            </p>
+          </div>
+        </div>
+
+        <!-- Instructor 2 (角川様) -->
+        <div class="reveal flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12" style="transition-delay: 0.2s">
+          <div class="w-48 h-48 md:w-64 md:h-64 shrink-0 rounded-full bg-gray-100 flex items-center justify-center relative overflow-hidden shadow-xl border-4 border-white">
+              <img src="kadokawa.jpg" alt="角川 義拓" class="w-full h-full object-cover">
+          </div>
+          <div class="text-center md:text-left flex-1">
+            <h3 class="text-3xl font-black text-gray-900 mb-2">角川 義拓</h3>
+            <span class="block text-brand-blue font-bold text-lg mb-6">エグゼクティブトレーナー / プロコーチ</span>
+            
+            <p class="text-gray-600 text-lg leading-relaxed">
+              大手外資系コンサルティングファーム、フリーランスとして第一線で活躍後、本研修事業を創設。<br><br>
+              数多くのクライアント企業を支援する中で、「日本のビジネスパーソンは極めて優秀であるにもかかわらず、適切な『思考のOS』がインストールされていない」という課題に直面し、実践的な教育の必要性を痛感。<br><br>
+              コンサルタント時代に培った課題解決手法と、プロコーチとしての心理的アプローチを融合させ、受講者に「確かな覚醒」をもたらす本プログラムを開発しました。実務での圧倒的な成果創出にとどまらず、迷いのないクリアな生き方を実現できると高い評価を得ています。
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 9: FAQ -->
+  <section id="faq" class="py-32 bg-brand-black">
+    <div class="max-w-3xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h2 class="reveal text-4xl md:text-5xl font-black tracking-tight text-white">よくある<span class="text-brand-blue">質問</span></h2>
+      </div>
+
+      <div class="reveal space-y-2">
+        <!-- FAQ 1 -->
+        <div class="faq-item border-b border-gray-800">
+          <div class="faq-question w-full text-left py-6 flex justify-between items-center text-white font-bold text-lg cursor-pointer">
+            <span>受講資格はありますか？初心者でも大丈夫ですか？</span>
+            <i class="fas fa-plus faq-icon text-brand-blue"></i>
+          </div>
+          <div class="faq-answer text-gray-400 leading-relaxed">
+            はい、全く問題ありません。本研修は、コンサルティングスキルの経験がない方を対象に設計されています。基礎から段階的に学べるカリキュラムですので、ご安心ください。
+          </div>
+        </div>
+
+        <!-- FAQ 2 -->
+        <div class="faq-item border-b border-gray-800">
+          <div class="faq-question w-full text-left py-6 flex justify-between items-center text-white font-bold text-lg cursor-pointer">
+            <span>オンラインでも受講できますか？</span>
+            <i class="fas fa-plus faq-icon text-brand-blue"></i>
+          </div>
+          <div class="faq-answer text-gray-400 leading-relaxed">
+            現在、受講形式（オンライン・対面）については検討中です。皆様にとって最適な形を検討し、詳細が決定次第ご案内いたします。
+          </div>
+        </div>
+
+        <!-- FAQ 3 -->
+        <div class="faq-item border-b border-gray-800">
+          <div class="faq-question w-full text-left py-6 flex justify-between items-center text-white font-bold text-lg cursor-pointer">
+            <span>働きながらでも受講できますか？</span>
+            <i class="fas fa-plus faq-icon text-brand-blue"></i>
+          </div>
+          <div class="faq-answer text-gray-400 leading-relaxed">
+            もちろんです。研修は週末（土日）を中心に開催されます。また、1日5時間の集中講義ですので、平日の業務に支障をきたすことなく受講いただけます。
+          </div>
+        </div>
+
+        <!-- FAQ 4 -->
+        <div class="faq-item border-b border-gray-800">
+          <div class="faq-question w-full text-left py-6 flex justify-between items-center text-white font-bold text-lg cursor-pointer">
+            <span>分割払いは可能ですか？</span>
+            <i class="fas fa-plus faq-icon text-brand-blue"></i>
+          </div>
+          <div class="faq-answer text-gray-400 leading-relaxed">
+            はい、クレジットカードによる分割払いに対応しています。最大24回払いまで可能ですので、月々の負担を抑えて受講いただけます。
+          </div>
+        </div>
+
+        <!-- FAQ 5 -->
+        <div class="faq-item border-b border-gray-800">
+          <div class="faq-question w-full text-left py-6 flex justify-between items-center text-white font-bold text-lg cursor-pointer">
+            <span>本当に転職に役立ちますか？</span>
+            <i class="fas fa-plus faq-icon text-brand-blue"></i>
+          </div>
+          <div class="faq-answer text-gray-400 leading-relaxed">
+            はい、非常に役立ちます。特にコンサルティングファームの採用面接（ケース面接）では、本研修で学ぶ「イシュー思考」や「論理的思考力」が直接問われます。多くの卒業生が難関企業の面接を突破しています。
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 7: Pricing -->
+  <section id="pricing" class="py-32 bg-brand-black">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-24">
+        <h2 class="reveal text-4xl md:text-5xl font-black tracking-tight text-white">料金<span class="text-brand-blue">プラン</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-center max-w-6xl mx-auto">
+        <!-- Plan 1 -->
+        <div class="reveal glass-card rounded-[2rem] p-10 text-center flex flex-col h-full">
+          <div class="text-2xl font-bold text-white mb-4">段階別受講</div>
+          <div class="text-5xl font-black text-white mb-2">18<span class="text-lg text-gray-400 font-normal ml-1">万円 (税抜)</span></div>
+          <div class="text-brand-orange font-bold text-sm mb-10">1段階あたり (10時間)</div>
+          
+          <ul class="text-left space-y-4 mb-10 flex-grow text-gray-300">
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> まずは1段階目から試せる</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 自分のペースで受講</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 合計54万円 (全3段階)</li>
+          </ul>
+          
+          <a href="#cta" class="block w-full py-4 px-6 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors mt-auto">選択する</a>
+        </div>
+
+        <!-- Plan 2 (Featured) -->
+        <div class="reveal bg-[#0f1115] border border-brand-blue rounded-[2rem] p-10 lg:p-14 text-center relative shadow-[0_0_50px_rgba(0,217,255,0.1)] lg:scale-105 z-10 flex flex-col h-full">
+          <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-blue text-black font-black text-sm px-6 py-2 rounded-full tracking-wider shadow-[0_0_20px_rgba(0,217,255,0.5)]">MOST POPULAR</div>
+          <div class="text-2xl font-bold text-white mb-4 mt-4">全3段階パック</div>
+          <div class="text-5xl font-black text-brand-blue mb-2">48<span class="text-lg text-gray-400 font-normal ml-1">万円 (税抜)</span></div>
+          <div class="text-brand-orange font-bold text-sm mb-10">6万円お得 (通常54万円)</div>
+          
+          <ul class="text-left space-y-4 mb-10 flex-grow text-gray-300">
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 全30時間の完全プログラム</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 優先的な席確保</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> ワークブック一式込み</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> コミュニティ参加権</li>
+          </ul>
+          
+          <a href="#cta" class="btn-glow block w-full py-5 px-6 bg-brand-blue text-black font-bold rounded-full mt-auto">これにする</a>
+        </div>
+
+        <!-- Plan 3 -->
+        <div class="reveal glass-card rounded-[2rem] p-10 text-center flex flex-col h-full">
+          <div class="text-2xl font-bold text-white mb-4">プレミアム</div>
+          <div class="text-5xl font-black text-white mb-2">58<span class="text-lg text-gray-400 font-normal ml-1">万円 (税抜)</span></div>
+          <div class="text-brand-orange font-bold text-sm mb-10">キャリア支援強化</div>
+          
+          <ul class="text-left space-y-4 mb-10 flex-grow text-gray-300">
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 全3段階パックの内容全て</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 個別キャリア相談 (60分×3回)</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 職務経歴書添削</li>
+            <li class="flex items-center gap-3"><i class="fas fa-check text-brand-blue"></i> 模擬面接対策</li>
+          </ul>
+          
+          <a href="#cta" class="block w-full py-4 px-6 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors mt-auto">選択する</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 6: Social Proof -->
+  <section id="social-proof" class="py-32 bg-white text-gray-900">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center mb-20">
+        <h2 class="reveal text-4xl md:text-5xl font-black tracking-tight">受講者の<span class="text-brand-blue">声</span></h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Review 1 -->
+        <div class="reveal light-card rounded-3xl p-10">
+          <i class="fas fa-quote-left text-3xl text-brand-blue/50 mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed mb-8">
+            「この研修のおかげで外資系コンサルへの転職に成功しました。ケース面接で『思考の深さが違う』と評価されました。」
+          </p>
+          <div>
+            <p class="font-bold text-gray-500">30代前半・男性</p>
+            <p class="text-brand-blue font-bold text-sm mt-1">元メーカー営業 → 戦略コンサルタント (年収+300万)</p>
+          </div>
+        </div>
+
+        <!-- Review 2 -->
+        <div class="reveal light-card rounded-3xl p-10" style="transition-delay: 0.2s">
+          <i class="fas fa-quote-left text-3xl text-brand-blue/50 mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed mb-8">
+            「社内の重要プロジェクトのリーダーに抜擢されました。以前は会議で発言できなかったのが嘘のようです。」
+          </p>
+          <div>
+            <p class="font-bold text-gray-500">20代後半・女性</p>
+            <p class="text-brand-blue font-bold text-sm mt-1">IT企業 プロジェクトリーダー</p>
+          </div>
+        </div>
+
+        <!-- Review 3 -->
+        <div class="reveal light-card rounded-3xl p-10" style="transition-delay: 0.4s">
+          <i class="fas fa-quote-left text-3xl text-brand-blue/50 mb-6 block"></i>
+          <p class="text-lg font-bold text-gray-800 leading-relaxed mb-8">
+            「『仕事が速い』と言われるようになりました。90点ルールで無駄を削ぎ落としたおかげで、残業も激減しました。」
+          </p>
+          <div>
+            <p class="font-bold text-gray-500">30代中盤・女性</p>
+            <p class="text-brand-blue font-bold text-sm mt-1">マーケティングマネージャー</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 10: CTA -->
+  <section id="cta" class="py-32 bg-brand-black text-center relative overflow-hidden">
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,217,255,0.15),transparent_70%)]"></div>
+    
+    <div class="max-w-3xl mx-auto px-6 relative z-10 text-white">
+      <span class="inline-block bg-brand-orange text-white font-black px-6 py-2 rounded-full text-lg mb-8 shadow-[0_0_20px_rgba(255,107,53,0.4)] tracking-wider">
+        残席わずか 12名 / 定員30名
+      </span>
+      
+      <h2 class="text-4xl md:text-6xl font-black mb-6 drop-shadow-md tracking-tight">
+        まずは無料体験セミナーへ
+      </h2>
+      
+      <p class="text-xl md:text-2xl font-medium mb-10 text-gray-300">
+        あなたの脳が「覚醒」する瞬間を体感してください。<br>
+        <span class="text-sm text-gray-500 font-light block mt-3">※無理な勧誘は一切ありません。</span>
+      </p>
+
+      <div class="flex items-center justify-center gap-3 text-xl font-bold mb-12 text-brand-blue">
+        <i class="far fa-calendar-alt"></i>
+        <span>次回開催: 2026年2月15日(土) 14:00-16:00</span>
+      </div>
+
+      <!-- Form Card (Premium Design) -->
+      <div class="relative reveal">
+        <!-- Glow Behind Form -->
+        <div class="absolute -inset-1 bg-gradient-to-r from-brand-blue to-brand-orange rounded-[2.5rem] blur opacity-20"></div>
+        
+        <!-- Glass Form Container -->
+        <div class="relative bg-[#0a1018]/80 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 md:p-14 shadow-2xl text-left">
+          
+          <div class="text-center mb-10 border-b border-white/5 pb-8">
+            <h3 class="text-2xl font-bold text-white tracking-wide">無料体験エントリー</h3>
+            <p class="text-sm text-gray-400 mt-2">以下のフォームに必要事項をご入力ください</p>
+          </div>
+
+          <form action="https://formspree.io/f/mgolkgqg" method="POST" class="space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-gray-400 font-medium mb-2 text-sm tracking-wider">姓</label>
+                <input type="text" name="lastName" required class="w-full bg-black/50 px-5 py-4 rounded-xl border border-white/10 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all text-white placeholder-gray-600" placeholder="例: 山田">
+              </div>
+              <div>
+                <label class="block text-gray-400 font-medium mb-2 text-sm tracking-wider">名</label>
+                <input type="text" name="firstName" required class="w-full bg-black/50 px-5 py-4 rounded-xl border border-white/10 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all text-white placeholder-gray-600" placeholder="例: 太郎">
+              </div>
+            </div>
+
+            <div>
+              <label class="block text-gray-400 font-medium mb-2 text-sm tracking-wider">メールアドレス</label>
+              <input type="email" name="email" required class="w-full bg-black/50 px-5 py-4 rounded-xl border border-white/10 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all text-white placeholder-gray-600" placeholder="例: yamada@example.com">
+            </div>
+            
+            <div>
+              <label class="block text-gray-400 font-medium mb-2 text-sm tracking-wider">電話番号 <span class="text-gray-600 text-xs ml-2">(任意)</span></label>
+              <input type="tel" name="phone" class="w-full bg-black/50 px-5 py-4 rounded-xl border border-white/10 focus:border-brand-blue focus:ring-1 focus:ring-brand-blue outline-none transition-all text-white placeholder-gray-600" placeholder="例: 090-1234-5678">
+            </div>
+            
+            <div class="pt-8">
+              <button type="submit" class="group relative w-full flex justify-center py-5 px-4 border border-transparent text-lg font-bold rounded-full text-black bg-gradient-to-r from-brand-blue to-[#00f2fe] hover:from-[#33e4ff] hover:to-[#33f5fe] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-blue shadow-[0_0_20px_rgba(0,217,255,0.4)] transition-all duration-300 transform hover:-translate-y-1">
+                <span class="absolute inset-y-0 left-0 flex items-center pl-8">
+                  <i class="fas fa-paper-plane text-black/50 group-hover:text-black transition-colors"></i>
+                </span>
+                無料体験に申し込む
+              </button>
+            </div>
+            
+            <p class="text-center text-gray-500 text-xs mt-6 leading-relaxed text-balance">
+              <i class="fas fa-lock mr-1 text-gray-600"></i> ご入力いただいた情報は安全に保護されます。
+              送信によりプライバシーポリシーに同意したものとみなされます。
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-brand-black border-t border-white/5 pt-20 pb-10">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+        <div>
+          <div class="font-black text-2xl text-white mb-6 tracking-wider">
+            BUSINESS <span class="text-brand-blue">AWAKENING</span>
+          </div>
+          <p class="text-gray-400 text-sm leading-relaxed">
+            コンサルタントの思考法を、すべてのビジネスパーソンへ。<br>
+            私たちは、個人の可能性を最大化し、社会の生産性を向上させます。
+          </p>
+        </div>
+        
+        <div>
+          <h4 class="text-white font-bold mb-6 text-lg">リンク</h4>
+          <ul class="space-y-3 text-gray-400 text-sm">
+            <li><a href="#" class="hover:text-brand-blue transition-colors">ホーム</a></li>
+            <li><a href="#curriculum" class="hover:text-brand-blue transition-colors">カリキュラム</a></li>
+            <li><a href="#pricing" class="hover:text-brand-blue transition-colors">料金プラン</a></li>
+            <li><a href="#instructor" class="hover:text-brand-blue transition-colors">講師紹介</a></li>
+            <li><a href="#faq" class="hover:text-brand-blue transition-colors">よくある質問</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <h4 class="text-white font-bold mb-6 text-lg">法的表記・SNS</h4>
+          <ul class="space-y-3 text-gray-400 text-sm mb-8">
+            <li><a href="#" class="hover:text-brand-blue transition-colors">運営会社</a></li>
+            <li><a href="#" class="hover:text-brand-blue transition-colors">プライバシーポリシー</a></li>
+            <li><a href="#" class="hover:text-brand-blue transition-colors">利用規約</a></li>
+            <li><a href="#" class="hover:text-brand-blue transition-colors">特定商取引法に基づく表記</a></li>
+          </ul>
+          <div class="flex gap-4 text-white text-xl">
+            <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-facebook"></i></a>
+            <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="text-center text-gray-600 text-sm border-t border-white/5 pt-8">
+        &copy; 2026 Business Awakening Inc. All rights reserved.
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Scroll Reveal Animation
+      const revealOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1,
+      };
+
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, revealOptions);
+
+      document.querySelectorAll('.reveal').forEach((el) => {
+        revealObserver.observe(el);
+      });
+
+      // 2. FAQ Accordion Logic
+      document.querySelectorAll('.faq-question').forEach((question) => {
+        question.addEventListener('click', () => {
+          const item = question.parentElement;
+          // Close others
+          document.querySelectorAll('.faq-item').forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('active');
+            }
+          });
+          // Toggle clicked
+          item.classList.toggle('active');
+        });
+      });
+
+      // 3. Navbar background change on scroll
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          navbar.classList.add('scrolled');
+        } else {
+          navbar.classList.remove('scrolled');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
