@@ -3,7 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ビジネスマン覚醒研修 | コンサル思考インストール</title>
+  
+  <!-- サイトタイトル（ブラウザのタブに表示） -->
+  <title>ビジネスマン覚醒研修 | あなたの能力覚醒</title>
+  
+  <!-- OGP設定 (LINE, Facebook, X等でシェアされた時の表示) -->
+  <meta property="og:title" content="ビジネスマン覚醒研修 | あなたの能力覚醒">
+  <meta property="og:description" content="「あの人、なんか変わったな」と言われる30時間。元外資系コンサルタントが教える『思考のOS』アップデート講座。体験セミナー受付中。">
+  <meta property="og:type" content="website">
+  <!-- ↓本番公開後に、実際のURL（例: https://kakusei-training.netlify.app/）に書き換えてください -->
+  <meta property="og:url" content="https://kakusei-training.netlify.app/"> 
+  <!-- ↓同じフォルダに 'ogp.jpg' という名前で画像を置いてください -->
+  <meta property="og:image" content="https://kakusei-training.netlify.app/ogp.jpg"> 
+  <meta property="og:site_name" content="ビジネスマン覚醒研修">
+  <meta property="og:locale" content="ja_JP">
+
+  <!-- Twitterカード設定 -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ビジネスマン覚醒研修 | あなたの能力覚醒">
+  <meta name="twitter:description" content="「あの人、なんか変わったな」と言われる30時間。思考のOSをアップデートせよ。">
+  <meta name="twitter:image" content="https://kakusei-training.netlify.app/ogp.jpg">
+
+  <!-- ファビコン設定 -->
+  <!-- ↓同じフォルダにアイコン画像を置いてください -->
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -648,53 +673,6 @@
     </div>
   </section>
 
-  <!-- Section 6: Social Proof -->
-  <section id="social-proof" class="py-32 bg-white text-gray-900">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="text-center mb-20">
-        <h2 class="reveal text-4xl md:text-5xl font-black tracking-tight">受講者の<span class="text-brand-blue">声</span></h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Review 1 -->
-        <div class="reveal light-card rounded-3xl p-10">
-          <i class="fas fa-quote-left text-3xl text-brand-blue/50 mb-6 block"></i>
-          <p class="text-lg font-bold text-gray-800 leading-relaxed mb-8">
-            「この研修のおかげで外資系コンサルへの転職に成功しました。ケース面接で『思考の深さが違う』と評価されました。」
-          </p>
-          <div>
-            <p class="font-bold text-gray-500">30代前半・男性</p>
-            <p class="text-brand-blue font-bold text-sm mt-1">元メーカー営業 → 戦略コンサルタント (年収+300万)</p>
-          </div>
-        </div>
-
-        <!-- Review 2 -->
-        <div class="reveal light-card rounded-3xl p-10" style="transition-delay: 0.2s">
-          <i class="fas fa-quote-left text-3xl text-brand-blue/50 mb-6 block"></i>
-          <p class="text-lg font-bold text-gray-800 leading-relaxed mb-8">
-            「社内の重要プロジェクトのリーダーに抜擢されました。以前は会議で発言できなかったのが嘘のようです。」
-          </p>
-          <div>
-            <p class="font-bold text-gray-500">20代後半・女性</p>
-            <p class="text-brand-blue font-bold text-sm mt-1">IT企業 プロジェクトリーダー</p>
-          </div>
-        </div>
-
-        <!-- Review 3 -->
-        <div class="reveal light-card rounded-3xl p-10" style="transition-delay: 0.4s">
-          <i class="fas fa-quote-left text-3xl text-brand-blue/50 mb-6 block"></i>
-          <p class="text-lg font-bold text-gray-800 leading-relaxed mb-8">
-            「『仕事が速い』と言われるようになりました。90点ルールで無駄を削ぎ落としたおかげで、残業も激減しました。」
-          </p>
-          <div>
-            <p class="font-bold text-gray-500">30代中盤・女性</p>
-            <p class="text-brand-blue font-bold text-sm mt-1">マーケティングマネージャー</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- Section 10: CTA -->
   <section id="cta" class="py-32 bg-brand-black text-center relative overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(0,217,255,0.15),transparent_70%)]"></div>
@@ -821,8 +799,8 @@
           <ul class="space-y-3 text-gray-400 text-sm mb-8">
             <li><a href="https://bethestand.tokyo/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">運営会社</a></li>
             <li><a href="https://bethestand.tokyo/privacy-policy/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a></li>
-            <li><a href="https://bethestand.tokyo/information-scurity/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">利用規約</a></li>
-            <li><a href="#" class="hover:text-brand-blue transition-colors">特定商取引法に基づく表記</a></li>
+            <li><a href="https://bethestand.tokyo/terms/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">利用規約</a></li>
+            <li><a href="#" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">特定商取引法に基づく表記</a></li>
           </ul>
           <div class="flex gap-4 text-white text-xl">
             <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-twitter"></i></a>
