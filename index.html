@@ -31,8 +31,8 @@
   <meta name="twitter:image" content="https://kakusei-training.netlify.app/ogp.jpg">
 
   <!-- ファビコン設定 -->
-  <link rel="icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="favicon.png">
 
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
@@ -213,7 +213,7 @@
     }
   </style>
 </head>
-<body class="antialiased selection:bg-brand-blue selection:text-black font-sans">
+<body class="antialiased selection:bg-brand-blue selection:text-black font-sans bg-brand-black">
   <!-- Google Tag Manager (noscript) -->
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PL9WJMWV"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -232,16 +232,10 @@
   </nav>
 
   <!-- Section 1: Hero -->
-  <section id="hero" class="relative min-h-[90vh] md:min-h-[800px] flex items-center justify-center overflow-hidden pt-20">
-    <!-- Background Image with Overlay -->
-    <div class="absolute inset-0 z-0">
-      <!-- 抽象的でプロフェッショナルな背景画像 -->
-      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Background" class="w-full h-full object-cover opacity-30">
-      <div class="absolute inset-0 bg-gradient-to-b from-brand-black via-brand-black/80 to-brand-black"></div>
-    </div>
-
-    <!-- Lighting Effects -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,217,255,0.15)_0%,transparent_50%)] z-0 pointer-events-none"></div>
+  <section id="hero" class="relative min-h-[90vh] md:min-h-[800px] flex items-center justify-center overflow-hidden pt-20 bg-brand-black">
+    <!-- Design: Pure Dark Mode with Gradient (No Image) -->
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(0,217,255,0.1)_0%,transparent_60%)]"></div>
+    <div class="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
     
     <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
       <h1 class="reveal font-black text-7xl md:text-9xl lg:text-[10rem] leading-[1.1] tracking-tight mb-8 hero-title-glow">
@@ -265,7 +259,7 @@
       </div>
 
       <!-- Badge (Updated for Compliance) -->
-      <div class="reveal mt-12 inline-block bg-gradient-to-br from-[#111]/90 to-[#0a101a]/90 backdrop-blur-md border border-brand-blue/30 rounded-3xl py-6 px-8 md:px-12 shadow-[0_0_50px_rgba(0,217,255,0.1)]" style="transition-delay: 0.8s">
+      <div class="reveal mt-12 inline-block bg-gradient-to-br from-[#111] to-[#0a101a] border border-brand-blue/30 rounded-3xl py-6 px-8 md:px-12 shadow-[0_0_50px_rgba(0,217,255,0.08)]" style="transition-delay: 0.8s">
         <p class="text-brand-blue text-sm font-bold mb-3 tracking-wider">元コンサル人事が伝える最高のトレーニング</p>
         <div class="flex flex-col md:flex-row items-center justify-center gap-4 text-brand-orange font-bold text-lg">
           <div class="flex items-center gap-2">
@@ -282,7 +276,7 @@
       
       <!-- Scroll Indicator -->
       <div class="reveal absolute bottom-[-100px] left-1/2 transform -translate-x-1/2 animate-bounce text-gray-500 opacity-50" style="transition-delay: 1.2s">
-        <span class="text-xs mb-2 block">Scroll</span>
+        <span class="text-xs mb-2 block tracking-widest uppercase">Scroll</span>
         <i class="fas fa-chevron-down text-2xl"></i>
       </div>
     </div>
@@ -298,27 +292,32 @@
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Cards... (Content same as before) -->
+        <!-- Card 1 -->
         <div class="reveal light-card rounded-3xl p-10 text-center md:text-left">
           <i class="fas fa-comments text-4xl text-brand-orange mb-6 block"></i>
           <p class="text-lg font-bold text-gray-800 leading-relaxed text-balance">会議で急に話を振られても、気の利いた発言ができず愛想笑いでやり過ごしてしまう</p>
         </div>
+        <!-- Card 2 -->
         <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.1s">
           <i class="fas fa-question text-4xl text-brand-orange mb-6 block"></i>
           <p class="text-lg font-bold text-gray-800 leading-relaxed text-balance">上司の「で、結局何が言いたいの？」の一言に焦り、説明がさらに迷走してしまう</p>
         </div>
+        <!-- Card 3 -->
         <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.2s">
           <i class="fas fa-hourglass-half text-4xl text-brand-orange mb-6 block"></i>
           <p class="text-lg font-bold text-gray-800 leading-relaxed text-balance">何時間もかけて作った資料が、「これ、ピントずれてない？」の一言でボツになる</p>
         </div>
+        <!-- Card 4 -->
         <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.3s">
           <i class="fas fa-tasks text-4xl text-brand-orange mb-6 block"></i>
           <p class="text-lg font-bold text-gray-800 leading-relaxed text-balance">タスクの山を前に、どこから手をつければいいか分からず、いつも残業に追われている</p>
         </div>
+        <!-- Card 5 -->
         <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.4s">
           <i class="fas fa-file-alt text-4xl text-brand-orange mb-6 block"></i>
           <p class="text-lg font-bold text-gray-800 leading-relaxed text-balance">キャリアアップしたいが、職務経歴書に書ける「私ならではの強み」が思いつかない</p>
         </div>
+        <!-- Card 6 -->
         <div class="reveal light-card rounded-3xl p-10 text-center md:text-left" style="transition-delay: 0.5s">
           <i class="fas fa-book-open text-4xl text-brand-orange mb-6 block"></i>
           <p class="text-lg font-bold text-gray-800 leading-relaxed text-balance">ロジカルシンキングの本を何冊読んでも、実際の業務でどう使えばいいか分からない</p>
@@ -327,7 +326,7 @@
     </div>
   </section>
 
-  <!-- Section 3: Solution (Swapped: Now before AI) -->
+  <!-- Section 3: Solution (Moved Here: Before AI) -->
   <section id="solution" class="py-32 bg-brand-black relative">
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-24">
@@ -410,7 +409,7 @@
     </div>
   </section>
 
-  <!-- ✨ AI Consultation (Swapped: Now after Solution) ✨ -->
+  <!-- ✨ AI Consultation (Moved Here: After Solution) ✨ -->
   <section id="ai-demo" class="py-32 bg-brand-black relative overflow-hidden">
     <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,217,255,0.05),transparent_60%)] pointer-events-none"></div>
     <div class="max-w-4xl mx-auto px-6 relative z-10">
