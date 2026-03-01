@@ -205,11 +205,43 @@
       right: 0;
       z-index: 9999;
       transform: translateY(100%);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, background 0.5s ease;
       box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
     }
     #floating-cta.visible {
       transform: translateY(0);
+    }
+    /* ZONE A: 水色（初期・体験セミナー訴求） */
+    #floating-cta.zone-a {
+      background: linear-gradient(90deg, #00D9FF, #00f2fe);
+    }
+    #floating-cta.zone-a #fcta-label,
+    #floating-cta.zone-a #fcta-sub { color: #000; }
+    #floating-cta.zone-a #fcta-btn {
+      background: #000;
+      color: #fff;
+    }
+    /* ZONE B: オレンジ（中盤・感情訴求） */
+    #floating-cta.zone-b {
+      background: linear-gradient(90deg, #FF6B35, #ff8c5a);
+    }
+    #floating-cta.zone-b #fcta-label,
+    #floating-cta.zone-b #fcta-sub { color: #fff; }
+    #floating-cta.zone-b #fcta-btn {
+      background: #fff;
+      color: #FF6B35;
+    }
+    /* ZONE C: 白地（終盤・決断訴求） */
+    #floating-cta.zone-c {
+      background: #fff;
+      box-shadow: 0 -4px 30px rgba(0,0,0,0.12);
+    }
+    #floating-cta.zone-c #fcta-label { color: #111; }
+    #floating-cta.zone-c #fcta-sub { color: #666; }
+    #floating-cta.zone-c #fcta-btn {
+      background: #FF6B35;
+      color: #fff;
+      box-shadow: 0 0 20px rgba(255,107,53,0.4);
     }
 
     /* Googleフォーム埋め込みスタイル */
@@ -405,6 +437,9 @@
     /* フッター */
     footer .text-gray-400 { color: #a8b4c0 !important; }
     footer .text-gray-600 { color: #8892a0 !important; }
+  
+  
+
   </style>
 </head>
 <body class="antialiased selection:bg-brand-blue selection:text-black font-sans">
@@ -414,14 +449,19 @@
   <!-- End Google Tag Manager (noscript) -->
 
   <!-- 固定CTAボタン（スクロール時表示） -->
-  <div id="floating-cta" class="bg-gradient-to-r from-brand-blue to-[#00f2fe]">
-    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-      <div class="text-black">
-        <span class="font-bold text-lg block">体験セミナー受付中</span>
-        <span class="text-sm opacity-80 flex items-center gap-2"><i class="fas fa-clock"></i> 次回開催: 3月20日(金・祝)</span>
+  <div id="floating-cta" class="transition-colors duration-500">
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-3 md:py-4 flex items-center justify-between gap-3">
+      <!-- 左：テキスト情報 -->
+      <div id="fcta-text" class="min-w-0">
+        <span id="fcta-label" class="font-bold text-sm md:text-base block leading-snug truncate">体験セミナー受付中</span>
+        <span id="fcta-sub" class="text-xs opacity-80 flex items-center gap-1"><i class="fas fa-clock"></i> <span id="fcta-sub-text">次回開催: 3月20日(金・祝)</span></span>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyOZymUPss9dDELMvaRgd3dVkD0wESOj8tNZwcoSqpw1XI_A/viewform" target="_blank" rel="noopener" class="bg-black text-white font-bold py-3 px-8 rounded-full hover:bg-gray-900 transition-colors">
-        今すぐ申し込む
+      <!-- 右：CTAボタン（スクロール深度で変化） -->
+      <a id="fcta-btn"
+         href="https://docs.google.com/forms/d/e/1FAIpQLSeyOZymUPss9dDELMvaRgd3dVkD0wESOj8tNZwcoSqpw1XI_A/viewform"
+         target="_blank" rel="noopener"
+         class="shrink-0 font-bold py-2.5 px-5 md:py-3 md:px-8 rounded-full transition-all duration-300 text-sm md:text-base whitespace-nowrap">
+        まず体験セミナーへ（¥2,000）
       </a>
     </div>
   </div>
@@ -475,6 +515,9 @@
 
   <!-- Section 1: Hero -->
   <section id="hero" class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-20 pb-12">
+      <div class="hero-dot" data-dot="1"></div>
+      <div class="hero-dot" data-dot="2"></div>
+    </div>
     <!-- Background Image with Overlay -->
     <div class="absolute inset-0 z-0">
       <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070&auto=format&fit=crop" alt="Background" class="w-full h-full object-cover opacity-30">
@@ -810,16 +853,16 @@
   <section id="story-professional" class="bg-brand-black overflow-hidden">
 
     <!-- ブロック①：共感 → 気づき -->
-    <div class="relative py-12 text-center overflow-hidden" style="background:linear-gradient(180deg,#f9fafb 0%,#f0f4f8 100%);">
+    <div class="relative py-12 text-center overflow-hidden" style="background:linear-gradient(180deg,#0d1520 0%,#111a27 100%);">
       <div class="max-w-4xl mx-auto px-6 relative z-10">
         <p class="text-brand-blue font-black tracking-[0.3em] text-xs mb-6 uppercase">The Secret of Top Performers</p>
-        <h2 class="reveal font-black leading-tight tracking-tight text-gray-900 mb-8" style="font-size:clamp(1.5rem, 3.5vw + 0.5rem, 3rem);">
+        <h2 class="reveal font-black leading-tight tracking-tight text-white mb-8" style="font-size:clamp(1.5rem, 3.5vw + 0.5rem, 3rem);">
           仕事の早いプロフェッショナルの思考は、<br>
           <span class="text-brand-blue">実は訓練ひとつで誰にでも手に入ります。</span>
         </h2>
-        <p class="reveal text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed mb-10" style="transition-delay:0.15s">
+        <p class="reveal text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10" style="transition-delay:0.15s">
           「あの人はもともと頭がいいから」と思っていませんか？<br>
-          違います。彼らが使っているのは、学べば誰でも使える<strong class="text-gray-900">「思考のフレームワーク」</strong>。<br>
+          違います。彼らが使っているのは、学べば誰でも使える<strong class="text-white">「思考のフレームワーク」</strong>。<br>
           才能でも学歴でも運でもない。それは、<span class="text-brand-blue font-bold">訓練によって後天的に獲得できるスキル</span>。
         </p>
         <div class="reveal inline-flex items-center gap-3 bg-brand-blue/10 border border-brand-blue/30 rounded-full px-6 py-3 text-brand-blue font-bold text-sm" style="transition-delay:0.25s">
@@ -1577,19 +1620,83 @@
       document.getElementById('exit-popup').classList.remove('show');
     }
 
-    // ===== 固定CTAボタン表示制御 =====
-    let floatingCtaShown = false;
+    // ===== 固定CTAボタン表示制御 + スクロール深度別CTA変化 =====
+    const floatingCta   = document.getElementById('floating-cta');
+    const fctaBtn       = document.getElementById('fcta-btn');
+    const fctaLabel     = document.getElementById('fcta-label');
+    const fctaSubText   = document.getElementById('fcta-sub-text');
+
+    // ゾーン定義
+    const ZONES = {
+      a: {
+        bg: 'zone-a',
+        label: '体験セミナー受付中',
+        sub: '次回開催: 3月20日(金・祝)',
+        btnText: 'まず体験セミナーへ（¥2,000）',
+        href: 'https://docs.google.com/forms/d/e/1FAIpQLSeyOZymUPss9dDELMvaRgd3dVkD0wESOj8tNZwcoSqpw1XI_A/viewform'
+      },
+      b: {
+        bg: 'zone-b',
+        label: '思考の型を体験してみませんか？',
+        sub: '30時間で仕事が変わる実戦プログラム',
+        btnText: '体験セミナーで確かめる',
+        href: 'https://docs.google.com/forms/d/e/1FAIpQLSeyOZymUPss9dDELMvaRgd3dVkD0wESOj8tNZwcoSqpw1XI_A/viewform'
+      },
+      c: {
+        bg: 'zone-c',
+        label: '本講座へのお申し込みはこちら',
+        sub: 'Step1: ¥208,000〜 / 全3段階パック: ¥550,000',
+        btnText: '今すぐ本講座に申し込む →',
+        href: 'https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform'
+      }
+    };
+
+    let currentZone = '';
+    let isVisible = false;
+
+    function applyZone(zoneKey) {
+      if (currentZone === zoneKey) return;
+      const z = ZONES[zoneKey];
+      // クラス切り替え
+      floatingCta.classList.remove('zone-a','zone-b','zone-c');
+      floatingCta.classList.add(z.bg);
+      // テキスト・リンク更新
+      fctaLabel.textContent   = z.label;
+      fctaSubText.textContent = z.sub;
+      fctaBtn.textContent     = z.btnText;
+      fctaBtn.href            = z.href;
+      currentZone = zoneKey;
+    }
+
+    // 初期ゾーン設定
+    applyZone('a');
+
     window.addEventListener('scroll', () => {
-      const heroSection = document.getElementById('hero');
-      const heroBottom = heroSection.offsetTop + heroSection.offsetHeight;
-      const floatingCta = document.getElementById('floating-cta');
-      
-      if (window.scrollY > heroBottom && !floatingCtaShown) {
+      const scrollY      = window.scrollY;
+      const docH         = document.documentElement.scrollHeight - window.innerHeight;
+      const scrollPct    = scrollY / docH; // 0〜1
+
+      const heroSection  = document.getElementById('hero');
+      const heroBottom   = heroSection.offsetTop + heroSection.offsetHeight;
+      const pricingEl    = document.getElementById('pricing');
+      const pricingTop   = pricingEl ? pricingEl.offsetTop : docH * 0.75;
+
+      // 表示・非表示
+      if (scrollY > heroBottom && !isVisible) {
         floatingCta.classList.add('visible');
-        floatingCtaShown = true;
-      } else if (window.scrollY <= heroBottom && floatingCtaShown) {
+        isVisible = true;
+      } else if (scrollY <= heroBottom && isVisible) {
         floatingCta.classList.remove('visible');
-        floatingCtaShown = false;
+        isVisible = false;
+      }
+
+      // ゾーン判定
+      if (scrollY >= pricingTop - 100) {
+        applyZone('c');              // ZONE C: 料金プラン以降
+      } else if (scrollPct >= 0.35) {
+        applyZone('b');              // ZONE B: 35%スクロール以降
+      } else {
+        applyZone('a');              // ZONE A: 初期
       }
     });
 
@@ -1611,6 +1718,7 @@
 
     // ===== ページ読み込み時の初期化 =====
     document.addEventListener('DOMContentLoaded', () => {
+
       // Scroll Reveal Animation
       const revealOptions = {
         root: null,
