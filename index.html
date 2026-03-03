@@ -40,14 +40,7 @@
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
-  <!-- Tailwind CDN (config must come BEFORE this script) -->
-  <script src="https://cdn.tailwindcss.com"></script>
 
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <script>
     tailwind.config = {
@@ -69,6 +62,15 @@
       }
     }
   </script>
+
+  <!-- Tailwind CDN (config must come BEFORE this script) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
 <body class="antialiased selection:bg-brand-blue selection:text-black font-sans">
   <!-- Google Tag Manager (noscript) -->
@@ -135,8 +137,10 @@
       <div class="font-black text-xl tracking-wider text-white">
         BUSINESS <span class="text-brand-blue">AWAKENING</span>
       </div>
-      <a href="#cta" class="bg-brand-blue text-black font-bold py-2 px-5 rounded-full text-xs hover:opacity-90 transition-opacity shadow-[0_4px_14px_rgba(0,217,255,0.2)] min-h-[36px] inline-flex items-center">体験申込</a>
-              <a href="#main-course" class="nav-secondary hidden sm:inline-block bg-white text-black font-bold py-2 px-4 rounded-full text-xs hover:bg-gray-100 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.1)]">直接申し込む</a>
+      <div class="flex items-center gap-2">
+        <a href="#cta" class="bg-brand-blue text-black font-bold py-2 px-4 rounded-full text-xs hover:opacity-90 transition-opacity shadow-[0_4px_14px_rgba(0,217,255,0.2)] min-h-[36px] inline-flex items-center whitespace-nowrap">体験申込</a>
+        <a href="#main-course" class="nav-secondary bg-white/10 border border-white/30 text-white font-bold py-2 px-4 rounded-full text-xs hover:bg-white/20 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.1)] whitespace-nowrap inline-flex items-center">本講座申込</a>
+      </div>
     </div>
   </nav>
 
@@ -162,7 +166,7 @@
       
       <h1 class="reveal fluid-h1 font-black leading-[1.2] tracking-tight mb-5 hero-title-glow">
         あなたの仕事が遅い理由は、<br>
-        <span class="text-brand-orange">「頭が悪い」からじゃない。</span>
+        <span class="text-brand-orange whitespace-nowrap">「頭が悪い」からじゃない。</span>
         <span class="block mt-1 text-brand-blue" style="font-size:clamp(1.3rem,4vw + 0.5rem, 3.5rem)">思考の「型」を習得する機会がないだけだ！</span>
       </h1>
       <div class="reveal mb-8 tracking-wide max-w-3xl mx-auto leading-relaxed" style="transition-delay: 0.2s">
@@ -170,13 +174,18 @@
         <p class="text-base md:text-lg text-gray-300 font-bold drop-shadow-[0_4px_10px_rgba(0,0,0,0.8)] leading-relaxed">プロフェッショナルの思考は、<br class="sm:hidden"><span class="text-brand-blue">後天的な訓練で誰にでも身につく</span>。<br class="sm:hidden">元コンサル人事が設計した<br class="sm:hidden"><span class="text-brand-orange">30時間で習得できる実戦型プログラム</span>。<br class="sm:hidden">100名以上が受講し、満足度98%。</p>
       </div>
       
-      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-3" style="transition-delay: 0.4s">
-        <a href="#cta" class="btn-glow bg-brand-blue text-black font-bold text-base sm:text-lg py-4 px-7 rounded-full w-full sm:w-auto flex items-center justify-center text-center leading-tight shadow-[0_0_30px_rgba(0,217,255,0.4)] min-h-[52px]">
-          体験セミナーに参加する<span class="text-xs sm:text-sm ml-1 opacity-80">（¥2,000）</span>
+      <div class="reveal flex flex-col items-center justify-center gap-4" style="transition-delay: 0.4s">
+        <!-- メインCTAボタン（1つに統合） -->
+        <a href="#cta" class="btn-glow bg-brand-blue text-black font-black text-lg sm:text-xl py-5 px-10 sm:px-14 rounded-full w-full sm:w-auto flex items-center justify-center text-center leading-tight shadow-[0_0_40px_rgba(0,217,255,0.5)] min-h-[60px] gap-2 tracking-wide">
+          <i class="fas fa-arrow-right"></i>
+          体験セミナーに参加する<span class="text-sm font-bold ml-1 opacity-80">（¥2,000）</span>
         </a>
-        <a href="#main-course" class="bg-white/10 border border-white/30 text-white font-bold text-base sm:text-lg py-4 px-7 rounded-full w-full sm:w-auto flex items-center justify-center text-center leading-tight hover:bg-white/20 transition-colors min-h-[52px]">
-          本コースに申し込む<span class="text-xs sm:text-sm ml-1 text-brand-blue opacity-80">（¥208,000〜）</span>
-        </a>
+        <!-- 3項目バッジ（PC/SP共通） -->
+        <div class="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-5 text-xs sm:text-sm text-gray-300 font-medium">
+          <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="fas fa-check-circle text-brand-blue"></i>学習期間: 30時間</span>
+          <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="fas fa-check-circle text-brand-blue"></i>転職適性診断付き</span>
+          <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="fas fa-check-circle text-brand-blue"></i>24時間サポート</span>
+        </div>
       </div>
 
       <!-- 期間限定バッジ -->
@@ -226,7 +235,7 @@
     <div class="max-w-7xl mx-auto px-6">
       <div class="text-center mb-10">
         <h2 class="reveal font-black tracking-tight leading-tight" style="font-size:clamp(1.35rem, 3.5vw + 0.5rem, 3rem);">
-          日々、こんな<span class="text-brand-blue whitespace-nowrap">もどかしさ</span>を感じていませんか？
+          <span class="sm:hidden">日々、<br>こんな<span class="text-brand-blue">もどかしさ</span>を<br>感じていませんか？</span><span class="hidden sm:inline">日々、こんな<span class="text-brand-blue">もどかしさ</span>を感じていませんか？</span>
         </h2>
       </div>
 
@@ -420,18 +429,20 @@
     <div class="relative py-12 text-center overflow-hidden" style="background:linear-gradient(180deg,#0d1520 0%,#111a27 100%);">
       <div class="max-w-4xl mx-auto px-6 relative z-10">
         <p class="text-brand-blue font-black tracking-[0.3em] text-xs mb-6 uppercase">The Secret of Top Performers</p>
-        <h2 class="reveal font-black leading-tight tracking-tight text-white mb-8" style="font-size:clamp(1.5rem, 3.5vw + 0.5rem, 3rem);">
-          仕事の早いプロフェッショナルの思考は、<br class="hidden sm:block">
-          <span class="text-brand-blue"><span class="whitespace-nowrap">実は訓練ひとつで</span>誰にでも手に入ります。</span>
+        <h2 class="reveal font-black leading-tight tracking-tight text-white mb-8" style="font-size:clamp(1.15rem, 3.5vw + 0.5rem, 3rem);">
+          仕事の早いプロフェッショナルの思考は、<br class="sm:hidden">
+          <span class="text-brand-blue"><span class="sm:hidden">実は訓練ひとつで<br>誰にでも手に入ります。</span><span class="hidden sm:inline">実は訓練ひとつで誰にでも手に入ります。</span></span>
         </h2>
-        <p class="reveal text-lg md:text-xl text-gray-200 max-w-3xl mx-auto leading-relaxed mb-10" style="transition-delay:0.15s">
-          「あの人はもともと頭がいいから」と思っていませんか？<br class="hidden sm:block">
-          違います。彼らが使っているのは、学べば誰でも使える<strong class="text-white">「思考のフレームワーク」</strong>。<br class="hidden sm:block">
+        <p class="reveal text-lg md:text-xl text-gray-200 max-w-3xl sm:mx-auto leading-relaxed mb-10 text-left sm:text-center" style="transition-delay:0.15s">
+          「あの人はもともと頭がいいから」と思っていませんか？<br class="sm:hidden">
+          違います。彼らが使っているのは、学べば誰でも使える<strong class="text-white">「思考のフレームワーク」</strong>。<br class="sm:hidden">
           才能でも学歴でも運でもない。それは、<span class="text-brand-blue font-bold">訓練によって後天的に獲得できるスキル</span>です。
         </p>
-        <div class="reveal inline-flex items-center gap-3 bg-brand-blue/10 border border-brand-blue/30 rounded-full px-6 py-3 text-brand-blue font-bold text-sm" style="transition-delay:0.25s">
-          <i class="fas fa-lightbulb"></i>
-          MBAで1年かけて教えることを、30時間で本質だけ習得する
+        <div class="reveal mt-2 mb-2" style="transition-delay:0.25s">
+          <p class="font-black leading-snug text-center" style="font-size:clamp(1.1rem,3.5vw,1.6rem);">
+            <span class="text-gray-300">MBAで1年かけて教えることを、</span><br>
+            <span class="text-brand-blue" style="font-size:clamp(1.25rem,4vw,2rem);">30時間で本質だけ習得する</span>
+          </p>
         </div>
       </div>
     </div>
@@ -486,9 +497,9 @@
           誰でも<span class="text-brand-blue">プロ級の仕事術</span>を手に入れ、<br>
           <span class="text-brand-orange">成果が止まらない</span>状態へ。
         </h2>
-        <p class="reveal text-lg text-gray-300 max-w-3xl mx-auto leading-relaxed mb-10" style="transition-delay:0.2s">
-          「仕事ができる人」と「そうでない人」の差は、才能ではありません。<br class="hidden sm:block">
-          <span class="text-white font-bold">使っている思考のフレームワークが違うだけ。</span>
+        <p class="reveal text-lg text-gray-300 max-w-3xl sm:mx-auto leading-relaxed mb-10 text-left sm:text-center" style="transition-delay:0.2s">
+          「仕事ができる人」と「そうでない人」の差は、才能ではありません。<br class="sm:hidden">
+          <span class="text-white font-bold">使っている思考のフレームワークが違うだけ。</span><br class="sm:hidden">
           正しい型を手に入れれば、あなたも同じ土俵に立てます。
         </p>
         <div class="reveal grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-16" style="transition-delay:0.25s">
@@ -1033,7 +1044,7 @@
             <li><a href="https://bethestand.tokyo/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">運営会社</a></li>
             <li><a href="https://bethestand.tokyo/privacy-policy/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">プライバシーポリシー</a></li>
             <li><a href="https://bethestand.tokyo/terms/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">利用規約</a></li>
-            <li><a href="https://bethestand.tokyo/tokushoho/" class="hover:text-brand-blue transition-colors" target="_blank" rel="noopener noreferrer">特定商取引法に基づく表記</a></li>
+            <li><a href="tokushoho.html" class="hover:text-brand-blue transition-colors">特定商取引法に基づく表記</a></li>
           </ul>
           <div class="flex gap-4 text-white text-xl">
             <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-twitter"></i></a>

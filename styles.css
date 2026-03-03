@@ -601,3 +601,20 @@ h1, h2, h3 { text-wrap: balance; }
   display: inline;
   word-break: keep-all;
 }
+
+/* ================================================================
+   SP FINE-TUNING v8
+   ================================================================ */
+
+/* ---------- ナビバー whitespace-nowrap 確保 ---------- */
+#navbar a { white-space: nowrap; }
+
+/* ---------- MBA見出し ---------- */
+.mba-headline { line-height: 1.35; }
+
+/* ---------- Story block left-align on SP ---------- */
+@media (max-width: 639px) {
+  #story-professional .text-left { text-align: left; }
+  /* "The Secret of Top Performers" ラベルを中央維持 */
+  #story-professional .tracking-\[0\.3em\] { text-align: center; }
+}
