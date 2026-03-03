@@ -40,7 +40,14 @@
   <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
   <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
 
+  <!-- Tailwind CDN (config must come BEFORE this script) -->
+  <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Custom styles -->
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 
   <script>
     tailwind.config = {
@@ -62,15 +69,6 @@
       }
     }
   </script>
-
-  <!-- Tailwind CDN (config must come BEFORE this script) -->
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Custom styles -->
-  <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
 </head>
 <body class="antialiased selection:bg-brand-blue selection:text-black font-sans">
   <!-- Google Tag Manager (noscript) -->
@@ -120,7 +118,7 @@
           体験セミナーに申し込む（¥2,000）
         </a>
         <a href="#main-course" onclick="closeExitPopup()" class="inline-block text-white/70 text-sm underline hover:text-white transition-colors mt-2">
-          直接申し込む
+          本講座申込
         </a>
       </div>
     </div>
@@ -139,7 +137,7 @@
       </div>
       <div class="flex items-center gap-2">
         <a href="#cta" class="bg-brand-blue text-black font-bold py-2 px-4 rounded-full text-xs hover:opacity-90 transition-opacity shadow-[0_4px_14px_rgba(0,217,255,0.2)] min-h-[36px] inline-flex items-center whitespace-nowrap">体験申込</a>
-        <a href="#main-course" class="nav-secondary bg-white/10 border border-white/30 text-white font-bold py-2 px-4 rounded-full text-xs hover:bg-white/20 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.1)] whitespace-nowrap inline-flex items-center">本講座申込</a>
+        <a href="#main-course" class="bg-white text-black font-bold py-2 px-4 rounded-full text-xs hover:bg-gray-100 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.1)] whitespace-nowrap inline-flex items-center min-h-[36px]">本講座申込</a>
       </div>
     </div>
   </nav>
@@ -175,12 +173,12 @@
       </div>
       
       <div class="reveal flex flex-col items-center justify-center gap-4" style="transition-delay: 0.4s">
-        <!-- メインCTAボタン（1つに統合） -->
+        <!-- メインCTAボタン（1つに統合・目立つデザイン） -->
         <a href="#cta" class="btn-glow bg-brand-blue text-black font-black text-lg sm:text-xl py-5 px-10 sm:px-14 rounded-full w-full sm:w-auto flex items-center justify-center text-center leading-tight shadow-[0_0_40px_rgba(0,217,255,0.5)] min-h-[60px] gap-2 tracking-wide">
           <i class="fas fa-arrow-right"></i>
           体験セミナーに参加する<span class="text-sm font-bold ml-1 opacity-80">（¥2,000）</span>
         </a>
-        <!-- 3項目バッジ（PC/SP共通） -->
+        <!-- 3項目バッジ（PC/SP共通・横並び） -->
         <div class="flex flex-row flex-wrap items-center justify-center gap-3 sm:gap-5 text-xs sm:text-sm text-gray-300 font-medium">
           <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="fas fa-check-circle text-brand-blue"></i>学習期間: 30時間</span>
           <span class="flex items-center gap-1.5 whitespace-nowrap"><i class="fas fa-check-circle text-brand-blue"></i>転職適性診断付き</span>
@@ -804,7 +802,7 @@
           </ul>
           
           <div class="flex flex-col gap-3 mt-auto">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform?usp=pp_url&entry.1053514044=Step1%E3%81%8A%E7%94%B3%E8%BE%BC%E3%81%BF%EF%BC%8820.8%E4%B8%87%E5%86%86%EF%BC%89" target="_blank" class="btn-glow block w-full py-4 px-6 bg-brand-blue text-black font-bold rounded-full text-center hover:opacity-90 transition-opacity">直接申し込む</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform?usp=pp_url&entry.1053514044=Step1%E3%81%8A%E7%94%B3%E8%BE%BC%E3%81%BF%EF%BC%8820.8%E4%B8%87%E5%86%86%EF%BC%89" target="_blank" class="btn-glow block w-full py-4 px-6 bg-brand-blue text-black font-bold rounded-full text-center hover:opacity-90 transition-opacity">本講座申込</a>
           </div>
         </div>
 
@@ -823,7 +821,7 @@
           </ul>
           
           <div class="flex flex-col gap-3 mt-auto">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform?usp=pp_url&entry.1053514044=%E5%85%A83%E6%AE%B5%E9%9A%8E%E3%83%91%E3%83%83%E3%82%AF%EF%BC%8855%E4%B8%87%E5%86%86%EF%BC%89" target="_blank" class="btn-glow block w-full py-4 px-6 bg-brand-blue text-black font-bold rounded-full text-center hover:opacity-90 transition-opacity">直接申し込む</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform?usp=pp_url&entry.1053514044=%E5%85%A83%E6%AE%B5%E9%9A%8E%E3%83%91%E3%83%83%E3%82%AF%EF%BC%8855%E4%B8%87%E5%86%86%EF%BC%89" target="_blank" class="btn-glow block w-full py-4 px-6 bg-brand-blue text-black font-bold rounded-full text-center hover:opacity-90 transition-opacity">本講座申込</a>
           </div>
         </div>
 
@@ -841,7 +839,7 @@
           </ul>
           
           <div class="flex flex-col gap-3 mt-auto">
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform?usp=pp_url&entry.1053514044=%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%EF%BC%8866%E4%B8%87%E5%86%86%EF%BC%89" target="_blank" class="btn-glow block w-full py-4 px-6 bg-brand-blue text-black font-bold rounded-full text-center hover:opacity-90 transition-opacity">直接申し込む</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform?usp=pp_url&entry.1053514044=%E3%83%97%E3%83%AC%E3%83%9F%E3%82%A2%E3%83%A0%EF%BC%8866%E4%B8%87%E5%86%86%EF%BC%89" target="_blank" class="btn-glow block w-full py-4 px-6 bg-brand-blue text-black font-bold rounded-full text-center hover:opacity-90 transition-opacity">本講座申込</a>
           </div>
         </div>
       </div>
