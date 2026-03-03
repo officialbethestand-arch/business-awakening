@@ -579,7 +579,7 @@ h1, h2, h3 { text-wrap: balance; }
 @media (max-width: 639px) {
   .curriculum-step h3 {
     font-size: 1.1rem;
-    white-space: normal; /* whitespace-nowrap が極端な場合は通常に戻す */
+    white-space: normal !important; /* Tailwind whitespace-nowrap 上書き */
     word-break: keep-all;
   }
   /* h3 が親からはみ出ないよう */
@@ -617,4 +617,22 @@ h1, h2, h3 { text-wrap: balance; }
   #story-professional .text-left { text-align: left; }
   /* "The Secret of Top Performers" ラベルを中央維持 */
   #story-professional .tracking-\[0\.3em\] { text-align: center; }
+}
+
+/* ===== MBA vs 30時間 比較カード SP 修正 ===== */
+@media (max-width: 639px) {
+  /* 比較カードのテキストサイズ調整 */
+  #story-professional .text-6xl { font-size: 2.8rem; }
+  /* 30時間の big number を確実にセンタリング */
+  #story-professional [class*="border-brand-blue"] > div[class*="text-6xl"] {
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+}
+
+/* ===== SP overflow-x 完全遮断 ===== */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
 }
