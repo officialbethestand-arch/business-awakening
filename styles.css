@@ -528,3 +528,76 @@ h1, h2, h3 { text-wrap: balance; }
   }
   .btn-glow:hover { transform: none; box-shadow: none; }
 }
+
+/* ================================================================
+   SP FINE-TUNING v7 – 日本語改行・テキスト最適化
+   ================================================================ */
+
+/* ---------- 日本語 keep-all: CJK 文字列の途中で折り返し禁止 ---------- */
+.ja-card-text {
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+/* ---------- ナビバー ボタン 最小高さ保証 ---------- */
+#navbar a {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* ---------- Floating CTA: ボタン中央揃え確保 ---------- */
+#fcta-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* ---------- Hero h1: SP フォントを少し下げて折り返し改善 ---------- */
+@media (max-width: 399px) {
+  .hero-title-glow {
+    font-size: clamp(1.45rem, 7.5vw, 2rem) !important;
+  }
+}
+
+/* ---------- Solution h2: SP でのフォントサイズ調整 ---------- */
+@media (max-width: 639px) {
+  #solution h2 {
+    font-size: clamp(1.35rem, 5.5vw, 2rem);
+  }
+}
+
+/* ---------- Story block1 h2: SP フォントサイズ調整 ---------- */
+@media (max-width: 639px) {
+  #story-professional h2 {
+    font-size: clamp(1.2rem, 5vw, 1.8rem);
+  }
+}
+
+/* ---------- Curriculum h3: 折り返し防止 (whitespace-nowrap 補助) ---------- */
+@media (max-width: 639px) {
+  .curriculum-step h3 {
+    font-size: 1.1rem;
+    white-space: normal; /* whitespace-nowrap が極端な場合は通常に戻す */
+    word-break: keep-all;
+  }
+  /* h3 が親からはみ出ないよう */
+  .curriculum-step .flex-grow {
+    min-width: 0;
+    overflow: hidden;
+  }
+}
+
+/* ---------- Problem h2: もどかしさ行まとめ ---------- */
+@media (max-width: 639px) {
+  #problem h2 {
+    word-break: keep-all;
+  }
+}
+
+/* ---------- Seats badge: 幅を確保して「を」孤立防止 ---------- */
+.seats-counter span {
+  display: inline;
+  word-break: keep-all;
+}
