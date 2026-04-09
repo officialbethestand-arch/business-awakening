@@ -1,0 +1,26 @@
+{
+  "_comment": "ここの日程を更新するだけでLPに自動反映されます。GitにpushするとNetlifyが自動デプロイします。",
+
+  "line_url": "https://lin.ee/wpIe0DA",
+  "line_label": "LINEで最新情報を受け取る",
+
+  "taiken_seminar": [
+    {
+      "date_long":  "2026年5月31日（日）",
+      "date_short": "5月31日(日)",
+      "time":       "14:00〜16:00",
+      "format":     "オンライン（Zoom）",
+      "price":      "¥2,000",
+      "form_url":   "https://docs.google.com/forms/d/e/1FAIpQLSeyOZymUPss9dDELMvaRgd3dVkD0wESOj8tNZwcoSqpw1XI_A/viewform"
+    }
+  ],
+
+  "main_course": [
+    {
+      "date_long":  "2026年6月開始（日程は体験セミナーにてご案内）",
+      "date_short": "6月〜",
+      "schedule":   "週末（土日）集中講義・1日5時間",
+      "form_url":   "https://docs.google.com/forms/d/e/1FAIpQLSeEXTJ9IoejSezpt6qQaSx9IlQ6wFD_Xp8NwfmFXVs0Afo9RA/viewform"
+    }
+  ]
+}

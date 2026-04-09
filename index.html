@@ -16,19 +16,26 @@
   <title>ビジネスマン覚醒研修 | あなたの能力覚醒</title>
   
   <!-- OGP設定 -->
-  <meta property="og:title" content="ビジネスマン覚醒研修 | あなたの能力覚醒">
-  <meta property="og:description" content="「あの人、なんか変わったな」と言われる30時間。元外資系コンサルタントが教える『思考のOS』アップデート講座。体験セミナー受付中。">
+  <meta property="og:title" content="ビジネスマン覚醒研修 | 思考のOSをアップデートせよ">
+  <meta property="og:description" content="「あの人、なんか変わったな」と言われる30時間。元外資系コンサルタントが教える思考のOS講座。体験セミナー¥2,000から。">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://business-asaking.netlify.app/"> 
-  <meta property="og:image" content="https://business-asaking.netlify.app/ogp.jpg"> 
-  <meta property="og:site_name" content="ビジネスマン覚醒研修">
+  <meta property="og:url" content="https://kakuseilp.bethestand.tokyo/">
+  <meta property="og:image" content="https://kakuseilp.bethestand.tokyo/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="ビジネスマン覚醒研修 | Be the Stand">
   <meta property="og:locale" content="ja_JP">
 
   <!-- Twitterカード設定 -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="ビジネスマン覚醒研修 | あなたの能力覚醒">
-  <meta name="twitter:description" content="「あの人、なんか変わったな」と言われる30時間。思考のOSをアップデートせよ。">
-  <meta name="twitter:image" content="https://business-asaking.netlify.app/ogp.jpg">
+  <meta name="twitter:site" content="@bethestand_ryo">
+  <meta name="twitter:title" content="ビジネスマン覚醒研修 | 思考のOSをアップデートせよ">
+  <meta name="twitter:description" content="「あの人、なんか変わったな」と言われる30時間。体験セミナー¥2,000から参加できます。">
+  <meta name="twitter:image" content="https://kakuseilp.bethestand.tokyo/ogp.png">
+
+  <!-- 検索エンジン向けSEO -->
+  <meta name="description" content="元外資系コンサルタントが教えるビジネス思考研修。イシュードリブン・エッセンシャル思考・ロジカルシンキングを30時間で習得。体験セミナー¥2,000から。">
+  <link rel="canonical" href="https://kakuseilp.bethestand.tokyo/">
 
   <!-- ファビコン設定 -->
   <link rel="icon" href="favicon.png" type="image/png">
@@ -136,6 +143,10 @@
         BUSINESS <span class="text-brand-blue">AWAKENING</span>
       </div>
       <div class="flex items-center gap-2">
+        <a href="https://lin.ee/wpIe0DA" target="_blank" rel="noopener"
+           class="bg-[#06C755] text-white font-bold py-2 px-3 sm:px-4 rounded-full text-xs hover:opacity-90 transition-opacity min-h-[36px] inline-flex items-center gap-1 whitespace-nowrap">
+          <i class="fab fa-line text-sm"></i><span class="hidden sm:inline">LINE登録</span>
+        </a>
         <a href="#cta" class="bg-brand-blue text-black font-bold py-2 px-4 rounded-full text-xs hover:opacity-90 transition-opacity shadow-[0_4px_14px_rgba(0,217,255,0.2)] min-h-[36px] inline-flex items-center whitespace-nowrap">体験申込</a>
         <a href="#main-course" class="bg-white text-black font-bold py-2 px-4 rounded-full text-xs hover:bg-gray-100 transition-colors shadow-[0_4px_14px_rgba(0,0,0,0.1)] whitespace-nowrap inline-flex items-center min-h-[36px]">本講座申込</a>
       </div>
@@ -186,10 +197,10 @@
         </div>
       </div>
 
-      <!-- 期間限定バッジ -->
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSeyOZymUPss9dDELMvaRgd3dVkD0wESOj8tNZwcoSqpw1XI_A/viewform" target="_blank" rel="noopener" class="reveal mt-6 inline-flex items-center gap-3 seats-counter text-white font-black px-5 py-3 rounded-full text-sm sm:text-base cursor-pointer" style="transition-delay: 0.5s">
+      <!-- 期間限定バッジ（日程動的表示） -->
+      <a id="hero-form-btn" href="https://docs.google.com/forms/d/e/1FAIpQLSeyOZymUPss9dDELMvaRgd3dVkD0wESOj8tNZwcoSqpw1XI_A/viewform" target="_blank" rel="noopener" class="reveal mt-6 inline-flex items-center gap-3 seats-counter text-white font-black px-5 py-3 rounded-full text-sm sm:text-base cursor-pointer" style="transition-delay: 0.5s">
         <i class="fas fa-calendar-check"></i>
-        <span>次回開催まで残りわずか！今すぐ申し込む</span>
+        <span id="hero-date-text">次回開催まで残りわずか！今すぐ申し込む</span>
       </a>
 
       <div class="reveal mt-5 flex flex-wrap justify-center items-center gap-x-4 gap-y-2 text-xs sm:text-sm text-gray-400 font-medium" style="transition-delay: 0.6s">
@@ -899,10 +910,18 @@
         あなたの脳が「覚醒」する瞬間を体感してください。<span class="text-sm text-gray-500 font-light block mt-3">※無理な勧誘は一切ありません。</span>
       </p>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-base sm:text-xl font-bold mb-12 text-brand-blue">
-        <span class="flex items-center gap-2"><i class="far fa-calendar-alt"></i> 次回開催：2026年3月20日（金）</span>
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-6 text-base sm:text-xl font-bold mb-8 text-brand-blue">
+        <span class="flex items-center gap-2"><i class="far fa-calendar-alt"></i> <span id="cta-date-long">次回開催：日程を確認中...</span></span>
         <span class="text-gray-400 hidden sm:inline">|</span>
-        <span>14:00〜16:00</span>
+        <span id="cta-time">14:00〜16:00</span>
+      </div>
+
+      <!-- LINE友達追加ボタン -->
+      <div class="mb-10">
+        <a href="https://lin.ee/wpIe0DA" target="_blank" rel="noopener" class="inline-flex hover:opacity-80 transition-opacity">
+          <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="44" border="0">
+        </a>
+        <p class="text-xs text-gray-500 mt-2">体験セミナーの日程変更もLINEで先行案内します</p>
       </div>
 
       <!-- Googleフォーム埋め込み -->
@@ -941,8 +960,11 @@
         <h2 class="text-4xl md:text-5xl font-black mb-4">
           本講座<span class="text-brand-blue">お申し込み</span>
         </h2>
-        <p class="text-gray-400 text-lg">
+        <p class="text-gray-400 text-lg mb-3">
           体験セミナー参加者限定の特別価格でお申し込みいただけます
+        </p>
+        <p class="text-brand-blue font-bold text-base">
+          <i class="far fa-calendar-alt mr-2"></i><span id="main-course-date">2026年6月開始（日程は体験セミナーにてご案内）</span>
         </p>
       </div>
 
@@ -1045,7 +1067,7 @@
             <li><a href="tokushoho.html" class="hover:text-brand-blue transition-colors">特定商取引法に基づく表記</a></li>
           </ul>
           <div class="flex gap-4 text-white text-xl">
-            <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-twitter"></i></a>
+            <a href="https://x.com/bethestand_ryo" target="_blank" rel="noopener" class="hover:text-brand-blue transition-colors"><i class="fab fa-twitter"></i></a>
             <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-facebook"></i></a>
             <a href="#" class="hover:text-brand-blue transition-colors"><i class="fab fa-youtube"></i></a>
           </div>
